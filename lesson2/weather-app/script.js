@@ -58,7 +58,6 @@ function changeBackground(code, isDay) {
   let backgroundImage = `url("./images/${code}-${
     isDay ? "day" : "night"
   }.jpg")`;
-  console.log(backgroundImage);
   body.style.backgroundImage = backgroundImage;
 
   // How to check if image even exist??
@@ -70,7 +69,7 @@ function changeBackground(code, isDay) {
 // helper api call object
 const api = {
   key: "d21fffed47b84c67a21204005200407",
-  base: "http://api.weatherapi.com/v1",
+  base: "https://api.weatherapi.com/v1",
 };
 
 // 2. Function to find current geo position
@@ -94,11 +93,9 @@ function fetchWeatherData(city = null, lat, long) {
   if (!city) {
     fetch(`${api.base}/current.json?key=${api.key}&q=${lat},${long}`)
       .then(function (response) {
-        console.log(response);
         return response.json();
       })
       .then(function (result) {
-        console.log(result);
         displayWeatherData(result);
       })
       .catch(function (err) {
@@ -121,7 +118,6 @@ function fetchWeatherData(city = null, lat, long) {
 // 4. Function to display data
 function displayWeatherData(data) {
   localTime = data.location.localtime.split(" ");
-  console.log(localTime);
   temperature.innerText = data.current.temp_c;
   pressure.innerText = data.current.pressure_in + " inches";
   humidity.innerText = data.current.precip_in + " mm.";
