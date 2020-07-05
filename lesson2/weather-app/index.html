@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather app</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <input
+          type="text"
+          name=""
+          class="search-box"
+          id="searchBox"
+          placeholder="Введите свой город"
+        />
+      </header>
+      <main>
+        <section class="location">
+          <div class="city"><span id="city">Kyiv</span>, <span id="country">UA</span></div>
+          <div class="time" id="time">20:00</div>
+          <div class="date"><span id="dayOfWeek">Thursday</span> <span id="day">2</span>, <span id="month">July</span></div>
+        </section>
+        <div class="current">
+          <div class="temp">
+            <span id="current-temperature">15</span
+            ><span id="units-c">&#8451;</span>
+            <span id="units-f">&#8457;</span>
+          </div>
+          <div class="weather-forecast">
+            <div class="item humidity">
+              Current humidity is <span id="current-humidity"></span>
+            </div>
+            <div class="item pressure">
+              Current athmosphere pressure is
+              <span id="current-pressure"></span>
+            </div>
+            <div class="item wind-speed">
+              Current wind speed is <span id="current-wind-speed"></span>
+            </div>
+            <div class="item weather-summary" id="weather-summary">Sunny</div>
+
+            <button class="to-celsius" id="to-celsius">to Fahrenheit</button>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
