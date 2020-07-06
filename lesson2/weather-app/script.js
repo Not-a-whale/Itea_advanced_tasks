@@ -18,7 +18,7 @@ let humidity = getElement("current-humidity"),
 let isFahr = false;
 let tempCels = 0;
 let tempFahr = 0;
-unitsF.style.display = 'none';
+unitsF.style.display = "none";
 
 const months = [
   "January",
@@ -172,17 +172,17 @@ function formatDate(day, month, dayOfWeek) {
     if (days === 0) {
       return daysOfWeek[0];
     } else if (days === 1) {
-      daysOfWeek[1];
+      return daysOfWeek[1];
     } else if (days === 2) {
-      daysOfWeek[2];
+      return daysOfWeek[2];
     } else if (days === 3) {
-      daysOfWeek[3];
+      return daysOfWeek[3];
     } else if (days === 4) {
-      daysOfWeek[4];
+      return daysOfWeek[4];
     } else if (days === 5) {
-      daysOfWeek[5];
+      return daysOfWeek[5];
     } else if (days === 6) {
-      daysOfWeek[6];
+      return daysOfWeek[6];
     }
   }
 }
@@ -206,17 +206,20 @@ function toFahrCelsConversionFunction() {
 
   if (!isFahr) {
     temperature.innerText = tempFahr;
-    unitsF.style.display = 'inline-block';
-    unitsC.style.display = 'none';
-    toCelsiusBTN.innerText = 'To Celsius';
+    unitsF.style.display = "inline-block";
+    unitsC.style.display = "none";
+    toCelsiusBTN.innerText = "To Celsius";
     isFahr = true;
   } else {
     temperature.innerText = tempCels;
-    unitsF.style.display = 'none';
-    unitsC.style.display = 'inline-block';
-    toCelsiusBTN.innerText = 'To Fahrenheit';
+    unitsF.style.display = "none";
+    unitsC.style.display = "inline-block";
+    toCelsiusBTN.innerText = "To Fahrenheit";
     isFahr = false;
   }
 }
 
 getCurrentGeoPosition();
+
+// link to use online
+// https://wonderful-galileo-22054e.netlify.app/
