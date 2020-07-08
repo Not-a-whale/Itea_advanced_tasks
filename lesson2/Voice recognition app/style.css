@@ -1,0 +1,11 @@
+body {
+  background: #ffc600;
+}
+
+.words {
+  max-width: 500px;
+  margin: 50px auto;
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 1rem 2rem 1rem 5rem;
+}

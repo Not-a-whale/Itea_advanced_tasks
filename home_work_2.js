@@ -87,3 +87,107 @@ function booWho(bool) {
 }
 
 booWho({});
+
+// 6) Title Case a Sentence
+function titleCase(str) {
+  let parsedStr = str.toUpperCase();
+  parsedStr = parsedStr.split(" ");
+  parsedStr = parsedStr
+    .map(function (elem) {
+      let parsedElem = elem.split("");
+      let firstCapitalLetter = parsedElem[0];
+      let lowerCaseLetters = "";
+      if (elem.length > 1) {
+        lowerCaseLetters = parsedElem.splice(1).join("").toLowerCase();
+      } else {
+        return elem;
+      }
+      return firstCapitalLetter + lowerCaseLetters;
+    })
+    .join(" ");
+  return parsedStr;
+}
+
+titleCase("I'm a little tea pot");
+
+// 7) Slice and Splice
+
+function frankenSplice(arr1, arr2, n) {
+  let arr1Copy = arr1.slice();
+  let arr2Start = arr2.slice(0, n);
+  let arr2End = arr2.slice(n);
+  let i = 0;
+  for (i = 0; i < arr1Copy.length; i++) {
+    arr2Start.push(arr1Copy[i]);
+  }
+  for (i = 0; i < arr2End.length; i++) {
+    arr2Start.push(arr2End[i]);
+  }
+
+  return arr2Start;
+}
+
+frankenSplice(["claw", "tentacle"], ["head", "shoulders", "knees", "toes"], 2);
+
+// 8) Falsy bouncer
+
+function bouncer(arr) {
+  let i = 0;
+  let arrBool = [];
+  for (; i < arr.length; i++) {
+    if (!!arr[i]) {
+      arrBool.push(arr[i]);
+    }
+  }
+  return arrBool;
+}
+
+bouncer([7, "ate", "", false, 9]);
+
+// 9) Where do I belong
+
+function getIndexToIns(arr, num) {
+  let i = 0;
+  let sortedArr = arr.sort((a, b) => a - b);
+
+  for (; i <= arr.length; i++) {
+    if (arr.length > 0) {
+      if (num <= arr[i]) {
+        return i;
+      }
+    } else {
+      return 0;
+    }
+  }
+  return arr.length;
+}
+
+getIndexToIns([2, 5, 10], 15);
+
+// 10) Mutation
+
+function mutation(arr) {
+  [str1, str2] = arr;
+  str1 = str1.toLowerCase();
+  str2 = str2.toLowerCase();
+  str1 = str1.split("");
+  str2 = str2.split("");
+  return str2.every((letter) => {
+    return str1.includes(letter);
+  });
+}
+mutation(["Mary", "Aarmy"]);
+
+// 11) Chunky monkey
+
+function chunkArrayInGroups(arr, size) {
+  let temp = [],
+    i = 0;
+
+  for (; i < arr.length; i += size) {
+    temp.push(arr.slice(i, i + size));
+  }
+  return temp;
+}
+
+chunkArrayInGroups(["a", "b", "c", "d"], 2);
