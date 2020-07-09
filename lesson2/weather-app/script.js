@@ -15,9 +15,12 @@ let humidity = getElement("current-humidity"),
   unitsF = getElement("units-f"),
   toCelsiusBTN = getElement("to-celsius");
 
+// State variables
 let isFahr = false;
 let tempCels = 0;
 let tempFahr = 0;
+
+// Helpful variables
 unitsF.style.display = "none";
 
 const months = [
@@ -219,6 +222,34 @@ function toFahrCelsConversionFunction() {
   }
 }
 
+function speechRecogintion() {
+  window.SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = new SpeechRecognition();
+  recognition.interimResults = true;
+  recognition.lang = "en-US";
+
+  recognition.addEventListener("result", function (event) {
+    let result = Array.from(event.results)
+      .map(function (result) {
+        return result[0];
+      })
+      .map(function (result) {
+        return result.transcript;
+      })
+      .join();
+    let lastWord = result.split(" ").pop();
+    if (lastWord === "find" || lastWord === "Find") {
+      searchBox.value = result.split(" ").shift();
+      fetchWeatherData(searchBox.value, null, null);
+    }
+  });
+  console.log(recognition);
+  recognition.addEventListener("end", recognition.start);
+  recognition.start();
+}
+
+speechRecogintion();
 getCurrentGeoPosition();
 
 // link to use online
